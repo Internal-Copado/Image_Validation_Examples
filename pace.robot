@@ -6,19 +6,26 @@ Documentation          Test suite for CRT starter.
 Library                QForce
 Library                QWeb
 Library                QImage
-Suite Setup            Open Browser                about:blank    chrome
+Suite Setup            Open Browser                about:blank               chrome
 Suite Teardown         Close All Browsers
 
 
 *** Test Cases ***
+Vanquis example
+    GoTo               https://pfggateway--devtest5.sandbox.my.site.com/gateway/s/applynow?
+    VerifyText         About you
+    ${second}=         LogScreenshot
+    # CompareImages      ${second}                   apply_form
+
+
 Test the home page
     [Documentation]    Go to the web shop, and verify that the slogan text appears on the page.
     GoTo               https://qentinelqi.github.io/shop/
     VerifyText         Find your spirit animal
     ClickText          Our Story
     # Taking a 2 full screen screenshots and comparing them
-    ${second}=         LogScreenshot    #fullpage=true
-    # MoveFiles          ${second}        
+    ${second}=         LogScreenshot               #fullpage=true
+    # MoveFiles        ${second}
     ${third}=          LogScreenshot
     CompareImages      ${second}                   ${third}
 
@@ -39,7 +46,7 @@ Test the home page with reference picture in folder and mask tolerance 1.0
     VerifyText         Find your spirit animal
     ClickText          Our Story
     ${second}=         LogScreenshot
-    CompareImages      ${second}                   our_story_modified.png       mask.png          tolerance=1
+    CompareImages      ${second}                   our_story_modified.png    mask.png          tolerance=1
 
 Test the home page with reference picture in folder and mask
     [Documentation]    Go to the web shop, and verify that the slogan text appears on the page.
@@ -47,7 +54,7 @@ Test the home page with reference picture in folder and mask
     VerifyText         Find your spirit animal
     ${second}=         LogScreenshot
     ClickText          Our Story
-    CompareImages      ${second}                   test.png       mask.png          tolerance=0.90
+    CompareImages      ${second}                   test.png                  mask.png          tolerance=0.90
 
 Test the home page with reference picture in folder and mask but difference just above ratio
     [Documentation]    Go to the web shop, and verify that the slogan text appears on the page.
@@ -55,7 +62,7 @@ Test the home page with reference picture in folder and mask but difference just
     VerifyText         Find your spirit animal
     ${second}=         LogScreenshot
     ClickText          Our Story
-    CompareImages      ${second}                   test.png       mask.png          tolerance=0.995
+    CompareImages      ${second}                   test.png                  mask.png          tolerance=0.995
 
 Test the home page two different pages
     [Documentation]    Go to the web shop, and verify that the slogan text appears on the page.
@@ -75,7 +82,7 @@ Test the home page with tolerance same as difference
     ${second}=         LogScreenshot
     ClickText          Our Story
     ${third}=          LogScreenshot
-    CompareImages      ${second}                   ${third}       tolerance=0.79
+    CompareImages      ${second}                   ${third}                  tolerance=0.79
 
 Test the home page with tolerance just above ratio
     [Documentation]    Go to the web shop, and verify that the slogan text appears on the page.
@@ -85,6 +92,5 @@ Test the home page with tolerance just above ratio
     ${second}=         LogScreenshot
     ClickText          Our Story
     ${third}=          LogScreenshot
-    CompareImages      ${second}                   ${third}       tolerance=0.81
+    CompareImages      ${second}                   ${third}                  tolerance=0.81
 
-        
