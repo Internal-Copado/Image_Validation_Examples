@@ -15,7 +15,7 @@ Vanquis example
     GoTo               https://pfggateway--devtest5.sandbox.my.site.com/gateway/s/applynow?
     VerifyText         About you
     ${second}=         LogScreenshot
-    # CompareImages      ${second}                   apply_form
+    CompareImages      ${second}                   apply_form.png
 
 
 Test the home page
