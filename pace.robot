@@ -18,6 +18,7 @@ Test the home page
     ClickText          Our Story
     # Taking a 2 full screen screenshots and comparing them
     ${second}=         LogScreenshot    fullpage=true
+    # MoveFiles          ${second}        
     ${third}=          LogScreenshot
     CompareImages      ${second}                   ${third}
 
